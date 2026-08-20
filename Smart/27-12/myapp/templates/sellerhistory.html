@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<style>
+    .booking-wrapper {
+        margin-top: -80px;
+        padding-bottom: 100px;
+    }
+
+    .booking-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .booking-table thead {
+        background: #112D42;
+        color: #fff;
+    }
+
+    .booking-table th {
+        padding: 16px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .booking-table td {
+        padding: 16px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .property-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+    }
+
+    .property-info img {
+        width: 70px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .property-title {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .property-location {
+        font-size: 11px;
+        color: #777;
+        line-height: 1.2;
+    }
+
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-success {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    .status-reject {
+        background: #f8d7da;
+        color: #721c24;
+    }
+
+    .razorpay-id {
+        font-size: 11px;
+        color: #888;
+        display: block;
+    }
+
+    .btn-action {
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: white !important;
+        transition: opacity 0.2s;
+    }
+
+    .btn-action:hover {
+        opacity: 0.8;
+    }
+</style>
+
+<div style="background:linear-gradient(135deg,#112D42,#1a4565);padding:100px 0 140px;text-align:center;color:white;">
+    <div class="container">
+        <h1 style="font-size:42px;font-weight:600">Property Booking Requests</h1>
+        <p style="opacity:0.8">View all bookings made for your listed properties</p>
+    </div>
+</div>
+
+<section class="booking-wrapper">
+    <div class="container">
+        <div class="booking-card">
+            <table class="booking-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Buyer Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Total Days</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in data %}
+                    <tr>
+                        <td>
+                            <div class="property-info">
+                                <img src="{{ booking.property_id.property_img.url }}">
+                                <div>
+                                    <div class="property-title">{{ booking.property_id.title }}</div>
+                                    <div class="property-location">{{ booking.property_id.location }}</div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <strong>{{ booking.buyer_id.name }}</strong><br>
+                            <small>{{ booking.buyer_id.email }}</small>
+                        </td>
+
+                        <td>{{ booking.start_date|date:"d M Y" }}</td>
+                        <td>{{ booking.end_date|date:"d M Y" }}</td>
+
+                        <!-- ✅ FIXED TOTAL DAYS -->
+                        <td>{{ booking.total_days|add:"1" }}</td>
+
+                        <td>₹ {{ booking.amount }}</td>
+
+                        <td>
+                            {{ booking.payment_mode }}
+                            <span class="razorpay-id">{{ booking.razorpay_payment_id }}</span>
+                        </td>
+
+                        <td>
+                            {% if booking.status == "Booked" %}
+                                <span class="status-badge status-success">Booked</span>
+                            {% elif booking.status == "Cancelled" %}
+                                <span class="status-badge status-reject">Cancelled</span>
+                            {% else %}
+                                <span class="status-badge status-pending">{{ booking.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" style="padding:40px;text-align:center">No Booking Requests Found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+        <!-- offcanvas-overlay start -->
+        <div class="offcanvas-overlay hidden fixed inset-0 bg-black opacity-50 z-50"></div>
+        <!-- offcanvas-overlay end -->
+        <!-- offcanvas-mobile-menu start -->
+        <div id="offcanvas-mobile-menu" class="offcanvas left-0 transform -translate-x-full fixed font-normal text-sm top-0 z-50 h-screen xs:w-[300px] lg:w-[380px] transition-all ease-in-out duration-300 bg-white">
+
+            <div class="py-12 pr-5 h-[100vh] overflow-y-auto">
+                <!-- close button start -->
+                <button class="offcanvas-close text-primary text-[25px] w-10 h-10 absolute right-0 top-0 z-[1]" aria-label="offcanvas">x</button>
+                <!-- close button end -->
+
+                <!-- offcanvas-menu start -->
+                <nav class="offcanvas-menu mr-[20px]">
+                    <ul>
+                        <li class="relative block border-b-primary border-b first:border-t first:border-t-primary">
+                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Home</a>
+                        </li>
+                        <li class="relative block border-b-primary border-b">
+                            <a href="about" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">About</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about">About</a></li>
+                            </ul>
+
+                        </li>
+                        <li class="relative block border-b-primary border-b">
+                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Properties</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties</a>
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesvs1"> properties v1</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesv2"> properties v2</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="add-properties">add properties </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties with sidebar</a>
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Property Details</a>
+
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+
+                                        <li>
+                                            <a href="add-properties" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">add
+                                                properties</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="properties-details" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties
+                                                details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Pages</a>
+
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a href="contact" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">contact
+                                        us</a>
+                                </li>
+
+                                <li>
+                                    <a href="login" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">login</a>
+                                </li>
+                                <li>
+                                    <a href="register" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">register</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                            </ul>
+                        </li>
+                        </li>
+                        <li class="relative block border-b-primary border-b"><a href="contact" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- offcanvas-menu end -->
+
+                <div class="px-5 flex flex-wrap mt-3 sm:hidden">
+                    <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Add
+                        Property</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- offcanvas-mobile-menu end -->
+        <!-- Header end -->
+
+        <!-- Hero section start -->
+        <section class="bg-primary relative pt-[130px] lg:pt-[80px] xl:pt-[0px] mb-[70px] lg:mb-[0px]">
+            <div class="hero-slider overflow-hidden">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- swiper-slide start -->
+                        <div class="swiper-slide lg:h-[700px] xl:h-[950px] xs:h-[auto] flex flex-wrap items-center">
+                            <div class="container">
+                                <div class="grid grid-cols-12">
+                                    <div class="col-span-12 lg:col-span-5 xl:col-span-6">
+                                        <div class="slider-content max-w-[560px] relative z-[9]">
+                                            <div class="relative mb-5 sub_title">
+                                                <span class="text-base text-white block">A new way to find Properties</span>
+                                            </div>
+                                            <h1 class="font-lora text-secondary text-[36px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl title font-normal">
+                                                <span>Find your Most Suitable Property</span>
+                                            </h1>
+
+                                            <p class="text-base text-white mt-8 mb-12 text max-w-[570px]">
+                                                Huge number of propreties availabe here for buy, and sell, also you
+                                                can find here co-living property, So you have lots of opportunity
+                                            </p>
+                                            <div class="inline-block hero_btn">
+                                                <a href="contact" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-white before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto hover:text-primary before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-secondary after:rounded-md after:transition-all block">Contact
+                                                    us</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 lg:col-span-7 xl:col-span-6">
+                                        <div class="relative mt-10 -right-6 md:mt-0 lg:absolute lg:right-0 lg:bottom-0 lg:w-3/4 xl:w-fit">
+                                            <img class="hero_image w-full" src="static/assets/images/hero/home-1.png" width="866" height="879" alt="hero image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- swiper-slide end-->
+                        <!-- swiper-slide start -->
+                        <div class="swiper-slide lg:h-[700px] xl:h-[950px] xs:h-[auto] flex flex-wrap items-center">
+                            <div class="container">
+                                <div class="grid grid-cols-12">
+                                    <div class="col-span-12 lg:col-span-5 xl:col-span-6">
+                                        <div class="slider-content max-w-[560px] relative z-[9]">
+                                            <div class="relative mb-5 sub_title">
+                                                <span class="text-base text-white block">A new way to find Properties</span>
+                                            </div>
+                                            <h1 class="font-lora text-secondary text-[36px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl title font-normal">
+                                                <span>Modern, Creative & Luxury Homes</span>
+                                            </h1>
+
+                                            <p class="text-base text-white mt-8 mb-12 text max-w-[570px]">
+                                                Huge number of propreties availabe here for buy, and sell, also you
+                                                can find here co-living property, So you have lots of opportunity
+                                            </p>
+                                            <div class="inline-block hero_btn">
+                                                <a href="contact" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-white before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto hover:text-primary before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-secondary after:rounded-md after:transition-all block">Contact
+                                                    us</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 lg:col-span-5 xl:col-span-6">
+                                        <div class="relative mt-10 md:mt-0 -right-6 lg:absolute lg:right-0 lg:bottom-0 lg:w-3/4 xl:w-fit">
+                                            <img class="hero_image w-full" src="static/assets/images/hero/home-1.png" width="866" height="879" alt="hero image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- swiper-slide end-->
+                    </div>
+                </div>
+            </div>
+            <span class="shape-4 absolute -bottom-[100px] left-0 scene" data-relative-input="true">
+    <img  data-depth="0.1" src="static/assets/images/hero/shape4.svg" alt="">
+  </span>
+        </section>
+        <!-- Hero section end -->
+
+        <!-- About Us Sectin Start -->
+        <section class="about-section pt-10">
+            <div class="container">
+                <div class="grid grid-cols-12 gap-6 items-center">
+                    <div class="col-span-12 lg:col-span-6">
+                        <span class="text-secondary text-tiny inline-block mb-2">Why Choose us</span>
+                        <h2 class="font-lora text-primary text-[24px] sm:text-[30px] leading-[1.277] xl:text-xl capitalize mb-5 lg:mb-16 font-medium max-w-[500px]">We Provide Latest Properties for our valuable Clients<span class="text-secondary">.</span></h2>
+                        <div class="scene" data-relative-input="true">
+                            <img data-depth="0.1" src="static/assets/images/about/about1.png" class="" loading="lazy" width="729" height="663" alt="about Image">
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 lg:pl-[70px]">
+                        <p class="max-w-[448px] ">Huge number of propreties availabe here for buy, sell and
+                            Rent. Also you find here co-living property so lots opportunity
+                            you have to choose here and enjoy huge discount. </p>
+                        <div class="-mb-10 mt-12 xl:mt-[70px] 2xl:mt-[100px]">
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/doller.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">Budget
+                                        Friendly</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/location.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">Prime
+                                        Location</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/trusted.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">
+                                        Trusted by
+                                        Thousand</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+{% endblock %}

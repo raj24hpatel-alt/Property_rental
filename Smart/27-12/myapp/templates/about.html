@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<!-- offcanvas-overlay start -->
+        <div class="bg-no-repeat bg-center bg-cover bg-[#FFF6F0] h-[350px] lg:h-[400px] flex flex-wrap items-center relative before:absolute before:inset-0 before:content-[''] before:bg-[#000000] before:opacity-[70%]" style="background-image: url('{% static 'assets/images/breadcrumb/bg-1.png' %}');"></div>
+        <!-- offcanvas-overlay end -->
+        <!-- offcanvas-mobile-menu start -->
+        <div id="offcanvas-mobile-menu" class="offcanvas left-0 transform -translate-x-full fixed font-normal text-sm top-0 z-50 h-screen xs:w-[300px] lg:w-[380px] transition-all ease-in-out duration-300 bg-white">
+
+            <div class="py-12 pr-5 h-[100vh] overflow-y-auto">
+                <!-- close button start -->
+                <button class="offcanvas-close text-primary text-[25px] w-10 h-10 absolute right-0 top-0 z-[1]" aria-label="offcanvas">x</button>
+                <!-- close button end -->
+
+                <!-- offcanvas-menu start -->
+
+                <nav class="offcanvas-menu mr-[20px]">
+                    <ul>
+                        <li class="relative block border-b-primary border-b first:border-t first:border-t-primary">
+                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Home</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="/">home 01</a></li>
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-2.html">home 02</a></li>
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-3.html">home 03</a></li>
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-4.html">home 04</a></li>
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-5.html">home 05</a></li>
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-6.html">home 06</a></li>
+                            </ul>
+                        </li>
+                        <li class="relative block border-b-primary border-b">
+                            <a href="about" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">About</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about">About</a></li>
+
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about-v2.html">About v2</a></li>
+                            </ul>
+
+                        </li>
+                        <li class="relative block border-b-primary border-b">
+                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Properties</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties</a>
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+
+
+
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesvs1"> properties v1</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesvs2"> properties v2</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="add-properties">add properties </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties with sidebar</a>
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+
+
+
+                                    </ul>
+
+
+                                </li>
+                                <li>
+                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Property Details</a>
+
+                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+
+                                        <li>
+                                            <a href="add-properties" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">add
+                                                properties</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="properties-details" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties
+                                                details</a>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Pages</a>
+
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a href="service" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">Service</a>
+                                </li>
+                                <li>
+                                    <a href="single-service" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">single
+                                        service</a>
+                                </li>
+                                <li>
+                                    <a href="contact" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">contact
+                                        us</a>
+                                </li>
+                                <li>
+                                    <a href="create-agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">create
+                                        agency</a>
+                                </li>
+                                <li>
+                                    <a href="login" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">login</a>
+                                </li>
+                                <li>
+                                    <a href="register" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">register</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">agency</a>
+
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a href="agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agency</a>
+                                </li>
+                                <li>
+                                    <a href="create-agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">create
+                                        agency</a>
+                                </li>
+
+                                <li>
+                                    <a href="agent.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agent</a>
+                                </li>
+
+                                <li>
+                                    <a href="agency-details.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agency
+                                        details</a>
+                                </li>
+
+                                <li>
+                                    <a href="agent-details.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agent
+                                        details</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Blog</a>
+
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li>
+                                    <a href="blog-grid.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog
+                                        grid</a>
+                                </li>
+
+                                <li>
+                                    <a href="blog-details.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog
+                                        details</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="relative block border-b-primary border-b"><a href="contact.html" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- offcanvas-menu end -->
+
+                <div class="px-5 flex flex-wrap mt-3 sm:hidden">
+                    <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Add
+                        Property</a>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- offcanvas-mobile-menu end -->
+        <!-- Header end -->
+
+
+        <!-- Hero section start -->
+        <section class="bg-no-repeat bg-left-bottom xl:bg-right-bottom bg-contain xl:bg-cover bg-[#E9F1FF] h-[450px] lg:h-[500px] xl:h-[650px] flex flex-wrap items-center relative">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="max-w-[420px] text-center mx-auto">
+                            <div class="mb-5"><span class="text-base text-secondary block">About us</span></div>
+                            <h1 class="font-lora text-primary text-[36px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl title font-medium">
+                                About Smart Property<span class="text-secondary">.</span>
+                            </h1>
+                            <p class="text-base mt-5">Huge number of propreties availabe here for buy and sell, also you can find here co-living property</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero section end -->
+
+
+        <!-- About section start -->
+        <section class="relative z-[1] mt-[80px] xl:mt-0">
+            <div class="container">
+                <div class="items-center">
+                    <div class="lg:mb-[60px] mb-10 -mt-[150px]">
+                        <img class="mx-auto w-full" src="static/assets/images/about/about5.png" width="597" height="716" alt="about image">
+                    </div>
+                    <div class="max-w-[830px] mx-auto text-center">
+                        <h2 class="font-lora text-primary text-[24px] sm:text-[30px] leading-[1.3888] xl:text-[35px] capitalize mb-[30px] lg:mb-[50px] font-medium"> We Provide Right Choice of Properties that You need and have great opportunity to choose from our Collection<span class="text-secondary">.</span></h2>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About section end -->
+
+
+        <!-- About Us Sectin Start -->
+        <section class="about-section pt-[80px] lg:pt-[120px]">
+            <div class="container">
+                <div class="grid grid-cols-12 gap-6 items-center">
+                    <div class="col-span-12 lg:col-span-6">
+                        <span class="text-secondary text-tiny inline-block mb-2">Why Choose us</span>
+                        <h2 class="font-lora text-primary text-[24px] sm:text-[30px] leading-[1.277] xl:text-xl capitalize mb-5 lg:mb-16 font-medium max-w-[500px]">We Provide Latest Properties for our valuable Clients.<span class="text-secondary">.</span></h2>
+                        <div class="scene" data-relative-input="true">
+                            <img data-depth="0.1" src="static/assets/images/about/about7.png" class="" loading="lazy" width="729" height="663" alt="about Image">
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 lg:pl-[70px]">
+                        <p class="max-w-[448px] ">Huge number of propreties availabe here for
+                            Rent. You have to choose here  lots opportunity and enjoy huge discount. </p>
+
+                        <div class="-mb-10 mt-12 xl:mt-[70px] 2xl:mt-[100px]">
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/doller.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">Budget
+                                        Friendly</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+
+                            </div>
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/location.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">Prime
+                                        Location</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+
+                            </div>
+                            <div class="flex flex-wrap mb-5 lg:mb-10">
+                                <img src="static/assets/images/icon/trusted.png" class="self-start mr-5" loading="lazy" width="50" height="50" alt="about Image">
+                                <div class="flex-1">
+                                    <h3 class="font-lora text-primary text-[22px] xl:text-lg capitalize mb-2">
+                                        Trusted by
+                                        Many</h3>
+                                    <p class="max-w-[315px]">Properties are most budget friendly so you
+                                        have opportunity to find the best one</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Us Sectin End -->
+
+
+        <!-- service Section Start-->
+        <section class="py-[80px] lg:py-[120px]">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="mb-[30px] lg:mb-[60px] text-center">
+                            <span class="text-secondary text-tiny inline-block mb-2">Our Services</span>
+                            <h2 class="font-lora text-primary text-[24px] sm:text-[30px] xl:text-xl capitalize font-medium">
+                                Services that we Provide<span class="text-secondary">.</span></h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px]">
+
+                    <div class="relative group">
+                        <a href="properties-details" class="block">
+                            <img src="static/assets/images/service/service3.png" class="w-full h-full block mx-auto rounded-[6px_6px_0px_0px]" loading="lazy" width="270" height="290" alt="Rent Property">
+                            <div class="drop-shadow-[0px_2px_15px_rgba(0,0,0,0.1)] hover:drop-shadow-[0px_8px_20px_rgba(0,0,0,0.15)] bg-[#FFFDFC] rounded-[0px_0px_6px_6px] px-[25px] py-[25px]">
+                                <h3 class="font-lora font-normal text-[24px] xl:text-lg text-primary group-hover:text-secondary transition-all mb-[5px]">Rent Property<span class="text-secondary group-hover:text-primary">.</span> </h3>
+                                <p class="font-light text-tiny">Provide prorpery Sale options opportunity to find the best </p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- service Section End-->
+{% endblock %}

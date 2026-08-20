@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<style>
+
+.wishlist-wrapper{
+margin-top:-80px;
+padding-bottom:100px;
+}
+
+.wishlist-card{
+background:white;
+border-radius:16px;
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
+overflow:hidden;
+}
+
+.wishlist-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.wishlist-table thead{
+background:#112D42;
+color:white;
+}
+
+.wishlist-table th{
+padding:16px;
+font-size:14px;
+text-align:center;
+}
+
+.wishlist-table td{
+padding:16px;
+border-bottom:1px solid #eee;
+text-align:center;
+font-size:14px;
+}
+
+.property-info{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.property-info img{
+width:70px;
+height:60px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.property-title{
+font-weight:600;
+color:#333;
+}
+
+.property-location{
+font-size:12px;
+color:#777;
+}
+
+.remove-btn{
+background:#dc3545;
+color:white;
+padding:6px 14px;
+border-radius:20px;
+text-decoration:none;
+font-size:13px;
+}
+
+.remove-btn:hover{
+background:#b02a37;
+}
+
+</style>
+
+
+<!-- Header -->
+<div style="background:linear-gradient(135deg,#112D42,#1a4565);padding:100px 0 140px;text-align:center;color:white;">
+<div class="container">
+
+<h1 style="font-size:42px;font-weight:600">
+My Wishlist
+</h1>
+
+<p style="opacity:0.8">
+View all saved properties
+</p>
+
+</div>
+</div>
+
+
+<section class="wishlist-wrapper">
+
+<div class="container">
+
+<div class="wishlist-card">
+
+<table class="wishlist-table">
+
+<thead>
+
+<tr>
+<th>Property</th>
+<th>Price</th>
+<th>Seller</th>
+<th>Added Date</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for i in data %}
+
+<tr>
+
+<td>
+
+<div class="property-info">
+
+<img src="{{ i.property_id.property_img.url }}">
+
+<div>
+
+<div class="property-title">
+{{ i.property_id.title }}
+</div>
+
+<div class="property-location">
+{{ i.property_id.location }}
+</div>
+
+</div>
+
+</div>
+
+</td>
+
+<td>
+₹ {{ i.property_id.price }}
+</td>
+
+<td>
+{{ i.property_id.seller_id.name }}
+</td>
+
+<td>
+{{ i.added_date }}
+</td>
+
+<td>
+
+<a href="/removewishlist/{{ i.id }}" class="remove-btn">
+Remove
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5" style="padding:40px;text-align:center">
+No Properties in Wishlist
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

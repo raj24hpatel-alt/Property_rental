@@ -1,0 +1,375 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<!--        &lt;!&ndash; offcanvas-overlay start &ndash;&gt;-->
+<!--        <div class="offcanvas-overlay hidden fixed inset-0 bg-black opacity-50 z-50"></div>-->
+<!--        &lt;!&ndash; offcanvas-overlay end &ndash;&gt;-->
+<!--        &lt;!&ndash; offcanvas-mobile-menu start &ndash;&gt;-->
+<!--        <div id="offcanvas-mobile-menu" class="offcanvas left-0 transform -translate-x-full fixed font-normal text-sm top-0 z-50 h-screen xs:w-[300px] lg:w-[380px] transition-all ease-in-out duration-300 bg-white">-->
+
+<!--            <div class="py-12 pr-5 h-[100vh] overflow-y-auto">-->
+<!--                &lt;!&ndash; close button start &ndash;&gt;-->
+<!--                <button class="offcanvas-close text-primary text-[25px] w-10 h-10 absolute right-0 top-0 z-[1]" aria-label="offcanvas">x</button>-->
+<!--                &lt;!&ndash; close button end &ndash;&gt;-->
+
+<!--                &lt;!&ndash; offcanvas-menu start &ndash;&gt;-->
+
+<!--                <nav class="offcanvas-menu mr-[20px]">-->
+<!--                    <ul>-->
+<!--                        <li class="relative block border-b-primary border-b first:border-t first:border-t-primary">-->
+<!--                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Home</a>-->
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="/">home 01</a></li>-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-2.html">home 02</a></li>-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-3.html">home 03</a></li>-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-4.html">home 04</a></li>-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-5.html">home 05</a></li>-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="index-6.html">home 06</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li class="relative block border-b-primary border-b">-->
+<!--                            <a href="about" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">About</a>-->
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about">About</a></li>-->
+
+<!--                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about-v2.html">About v2</a></li>-->
+<!--                            </ul>-->
+
+<!--                        </li>-->
+<!--                        <li class="relative block border-b-primary border-b">-->
+<!--                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Properties</a>-->
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li>-->
+<!--                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties</a>-->
+<!--                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+
+
+
+<!--                                        <li>-->
+<!--                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesvs1"> properties v1</a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="propertiesvs2"> properties v2</a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary" href="add-properties">add properties </a>-->
+<!--                                        </li>-->
+
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Properties with sidebar</a>-->
+<!--                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+
+<!--                                        <li>-->
+<!--                                            <a href="properties-left-side-bar.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties-->
+<!--                                                left side bar</a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a href="properties-right-side-bar.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties-->
+<!--                                                right side bar</a>-->
+<!--                                        </li>-->
+
+<!--                                        <li>-->
+<!--                                            <a href="properties-list-left-side-bar.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties-->
+<!--                                                list left side bar</a>-->
+<!--                                        </li>-->
+
+<!--                                        <li>-->
+<!--                                            <a href="properties-list-right-side-bar.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties-->
+<!--                                                list-->
+<!--                                                right side bar</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+
+
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="#">Property Details</a>-->
+
+<!--                                    <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+
+<!--                                        <li>-->
+<!--                                            <a href="add-properties" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">add-->
+<!--                                                properties</a>-->
+<!--                                        </li>-->
+
+<!--                                        <li>-->
+<!--                                            <a href="properties-details" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">properties-->
+<!--                                                details</a>-->
+<!--                                        </li>-->
+
+<!--                                    </ul>-->
+
+<!--                                </li>-->
+
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Pages</a>-->
+
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li>-->
+<!--                                    <a href="service" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">Service</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="single-service" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">single-->
+<!--                                        service</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="contact" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">contact-->
+<!--                                        us</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="create-agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">create-->
+<!--                                        agency</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="login" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">login</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="register" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">register</a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+
+<!--                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">agency</a>-->
+
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li>-->
+<!--                                    <a href="agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agency</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="create-agency.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">create-->
+<!--                                        agency</a>-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    <a href="agent.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agent</a>-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    <a href="agency-details.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agency-->
+<!--                                        details</a>-->
+<!--                                </li>-->
+
+<!--                                <li>-->
+<!--                                    <a href="agent-details.html" class="text-sm pt-3 px-10 pb-1 text-black font-light block transition-all hover:text-secondary">agent-->
+<!--                                        details</a>-->
+<!--                                </li>-->
+
+<!--                            </ul>-->
+
+<!--                        </li>-->
+
+<!--                        <li class="relative block border-b-primary border-b"><a href="#" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Blog</a>-->
+
+<!--                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">-->
+<!--                                <li>-->
+<!--                                    <a href="blog-grid.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog-->
+<!--                                        grid</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="blog-grid-left-side-bar.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog-->
+<!--                                        grid left side bar</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="blog-grid-right-side-bar.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog-->
+<!--                                        grid right side bar</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="blog-details.html" class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary">blog-->
+<!--                                        details</a>-->
+<!--                                </li>-->
+
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li class="relative block border-b-primary border-b"><a href="contact.html" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Contact</a></li>-->
+<!--                    </ul>-->
+<!--                </nav>-->
+<!--                &lt;!&ndash; offcanvas-menu end &ndash;&gt;-->
+
+<!--                <div class="px-5 flex flex-wrap mt-3 sm:hidden">-->
+<!--                    <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Add-->
+<!--                        Property</a>-->
+<!--                </div>-->
+
+
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; offcanvas-mobile-menu end &ndash;&gt;-->
+<!--        &lt;!&ndash; Header end &ndash;&gt;-->
+
+        <!-- Hero section start -->
+        <section class="bg-no-repeat bg-center bg-cover bg-[#FFF6F0] h-[350px] lg:h-[513px] flex flex-wrap items-center relative before:absolute before:inset-0 before:content-[''] before:bg-[#000000] before:opacity-[70%]" style="background-image: url('static/assets/images/breadcrumb/bg-1.png');">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="max-w-[700px]  mx-auto text-center text-white relative z-[1]">
+                            <div class="mb-5"><span class="text-base block">Property ADD</span></div>
+                            <h1 class="font-lora text-[32px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl font-medium">
+                                Add Property
+                            </h1>
+
+                            <p class="text-base mt-5 max-w-[500px] mx-auto text-center">
+                                Huge number of propreties availabe here for buy and sell
+                                also you can find here co-living property as you like
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero section end -->
+
+        <!-- create agency Etart-->
+        <div class="pt-[80px] lg:pt-[120px] add-properties-form-select">
+            <div class="container">
+                <form action="/insertproperty" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+
+                    <div class="grid grid-cols-12 gap-x-[30px]">
+
+                        <div class="mb-[45px] col-span-12 md:col-span-8">
+    <label for="category_id" class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">
+        Category <span class="text-secondary">.</span>
+    </label>
+
+    <div class="relative">
+        <select
+            name="category_id"
+            id="category_id"
+            required
+            class="font-light w-full leading-[1.75] appearance-none bg-white border border-primary border-opacity-60 rounded-[8px] p-[15px] pr-[40px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] transition-all text-body"
+        >
+            <option value="" disabled selected>Select Category</option>
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.category_name }}</option>
+            {% endfor %}
+        </select>
+
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-primary">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            </svg>
+        </div>
+    </div>
+</div>
+                         <!--<div class="mb-[45px] col-span-12 md:col-span-8">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">Seller ID</label>
+                            <input type="number" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] " type="number" placeholder="Seller ID">
+                        </div>-->
+                        <div class="mb-[45px] col-span-12 md:col-span-8">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="property-title"> Property
+                                Title</label>
+                            <input id="property-title" name="title" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] " type="text" placeholder="Property Title">
+                        </div>
+                          <div class="mb-[45px] col-span-12">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="textarea">Property
+                                Description</label>
+                            <textarea class="h-[196px] xl:h-[360px] font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] resize-none" name="textarea" id="textarea" cols="30" rows="10" placeholder="Write you text here"></textarea>
+                        </div>
+                         <div class="mb-[45px] col-span-12 md:col-span-6">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="PropertyType1">Property
+                                Type</label>
+
+                            <div class="relative">
+                                <select class="nice-select form-select" name="type" id="PropertyType1">
+                                    <option value="0">Duplex Villa</option>
+                                    <option value="1">Villa</option>
+                                    <option value="2">Duplex</option>
+                                    <option value="3">Farmhose</option>
+                                    <option value="4">Penthouse</option>
+                                    <option value="5">Resort</option>
+                                </select>
+                            </div>
+                             <div class="grid grid-cols-12 gap-x-[30px]">
+
+                        <div class="col-span-12">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="Location">Location</label>
+                        </div>
+
+                        <div class="mb-[45px] col-span-12 md:col-span-6">
+                            <input id="Location" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] " type="text" name="location" placeholder="Address">
+                        </div>
+
+
+
+                    </div>
+
+                        <div class="mb-[45px] col-span-12 md:col-span-4">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">Price</label>
+                            <input type="number" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] " type="number" name="price" placeholder="Price">
+
+                           <!-- <div class="relative">
+                               &lt;!&ndash; <select class="nice-select form-select" id="Price">
+                                    <option selected value="0">Price $</option>
+                                    <option value="1">$5000</option>
+                                    <option value="2">$7000</option>
+                                </select>&ndash;&gt;
+                            </div>-->
+                        </div>
+
+
+
+
+                    </div>
+                        <div class="grid grid-cols-12 gap-x-[30px]">
+
+
+                        </div>
+
+                        <div class="mb-[45px] col-span-12 md:col-span-6">
+                            <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="PropertyStatus1">Property
+                                Status</label>
+
+                            <div class="relative">
+                                <select class="nice-select form-select" name="status" id="PropertyStatus1">
+                                    <option value="0">Available</option>
+                                    <option value="1">UnAvailable</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="image-upload-container" style="margin-bottom: 30px;">
+                        <label for="Images" style="display:block; margin-bottom:10px; font-weight:600; font-size:16px;">Add Images</label>
+                        <input type="file" id="Images" name="Images" accept="image/*" multiple>
+                    </div>
+
+                   <button type="submit" class="bg-secondary text-white font-lora font-medium text-[18px] py-[15px] px-[40px] rounded-[8px] hover:bg-primary transition-all">
+                           Add Property
+                        </button>
+                </form>
+            </div>
+        </div>
+               <div>
+        </div>
+            </div>
+            </div>
+        </section>
+<script>
+document.getElementById("Images").addEventListener("change", function(event) {
+    let preview = document.getElementById("preview");
+    preview.innerHTML = "";
+
+    for (let file of event.target.files) {
+        let reader = new FileReader();
+
+        reader.onload = function(e) {
+            let img = document.createElement("img");
+            img.src = e.target.result;
+            img.style.width = "100px";
+            img.style.borderRadius = "8px";
+            preview.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+{% endblock %}
+

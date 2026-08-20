@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+    <section class="bg-no-repeat bg-center bg-cover bg-[#FFF6F0] h-[350px] lg:h-[513px] flex flex-wrap items-center relative before:absolute before:inset-0 before:content-[''] before:bg-[#000000] before:opacity-[70%]" style="background-image: url('{% static 'assets/images/breadcrumb/bg-1.png' %}');">
+        <div class="container">
+            <div class="grid grid-cols-12">
+                <div class="col-span-12">
+                    <div class="max-w-[700px] mx-auto text-center text-white relative z-[1]">
+                        <div class="mb-5"><span class="text-base block">Property EDIT</span></div>
+                        <h1 class="font-lora text-[32px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl font-medium">
+                            Update Listing
+                        </h1>
+                        <p class="text-base mt-5 max-w-[500px] mx-auto text-center">
+                            Modify the details of your property below to keep your listing accurate and up to date.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="pt-[80px] lg:pt-[120px] pb-[80px] add-properties-form-select">
+        <div class="container">
+            <form action="/updateproperty" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="propertyid" value="{{property.id}}">
+
+                <div class="grid grid-cols-12 gap-x-[30px]">
+
+                    <div class="mb-[45px] col-span-12 md:col-span-8">
+                        <label for="category_id" class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">
+                            Category <span class="text-secondary">.</span>
+                        </label>
+                        <div class="relative">
+                            <select name="category_id" id="category_id" required class="font-light w-full leading-[1.75] appearance-none bg-white border border-primary border-opacity-60 rounded-[8px] p-[15px] pr-[40px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px] transition-all text-body">
+                                {% for cat in category %}
+                                <option value="{{ cat.id }}">
+                                    {{ cat.category_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-primary">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-[45px] col-span-12 md:col-span-8">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="property-title">Property Title</label>
+                        <input id="property-title" name="title" value="{{ property.title }}" class="font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]" type="text">
+                    </div>
+
+                    <div class="mb-[45px] col-span-12">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="textarea">Property Description</label>
+                        <textarea class="h-[196px] xl:h-[300px] font-light w-full leading-[1.75] placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] resize-none" name="description" id="textarea" cols="30" rows="10">{{ property.description }}</textarea>
+                    </div>
+
+                    <div class="mb-[45px] col-span-12 md:col-span-6">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="PropertyType1">Property Type</label>
+                        <div class="relative">
+                            <select class="font-light w-full leading-[1.75] border border-primary border-opacity-60 rounded-[8px] p-[15px] h-[60px] focus:outline-none focus:border-secondary" name="type" id="PropertyType1">
+                                <option value="Villa" {% if property.type == "Villa" %}selected{% endif %}>Villa</option>
+                                <option value="Duplex Villa" {% if property.type == "DuplexVilla" %}selected{% endif %}>Duplex Villa</option>
+                                <option value="Duplex" {% if property.type == "Duplex" %}selected{% endif %}>Duplex</option>
+                                <option value="Farmhose" {% if property.type == "Farmhouse" %}selected{% endif %}>Farmhouse</option>
+                                <option value="Penthouse" {% if property.type == "Penthouse" %}selected{% endif %}>Penthouse</option>
+                                <option value="Resort" {% if property.type == "Resort" %}selected{% endif %}>Resort</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-[45px] col-span-12 md:col-span-6">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="Location">Location</label>
+                        <input id="Location" value="{{ property.location }}" class="font-light w-full leading-[1.75] border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:outline-none h-[60px]" type="text" name="location">
+                    </div>
+
+                    <div class="mb-[45px] col-span-12 md:col-span-4">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">Price (Rs.)</label>
+                        <input type="number" value="{{ property.price }}" class="font-light w-full leading-[1.75] border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-secondary focus:outline-none h-[60px]" name="price">
+                    </div>
+
+                    <div class="mb-[45px] col-span-12 md:col-span-4">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary" for="PropertyStatus1">Property Status</label>
+                        <div class="relative">
+                            <select class="font-light w-full leading-[1.75] border border-primary border-opacity-60 rounded-[8px] p-[15px] h-[60px] focus:outline-none focus:border-secondary" name="status" id="PropertyStatus1">
+                                <option value="Available" {% if property.status == "Available" %}selected{% endif %}>Available</option>
+                                <option value="UnAvailable" {% if property.status == "UnAvailable" %}selected{% endif %}>UnAvailable</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-[45px] col-span-12">
+                        <label class="mb-[20px] font-lora text-[20px] font-medium leading-none block text-primary">Property Image</label>
+                        <div class="flex items-center gap-5">
+                            {% for img in property.images.all %}
+    <div>
+        <img src="{{ img.image.url }}" width="100">
+        <a href="/delete-image/{{ img.id }}">Delete</a>
+    </div>
+{% endfor %}
+                            <input type="file" id="Images" name="Images" multiple>
+                             </div>
+<!--                        <p class="text-xs text-body mt-2">Leave blank to keep the current image.</p>-->
+                    </div>
+
+                </div>
+
+                <div class="mt-5 mb-10">
+<!--                    <a href="/" button type="submit" class="bg-secondary text-white font-lora font-medium text-[18px] py-[15px] px-[40px] rounded-[8px] hover:bg-primary transition-all">-->
+<!--                        Update Property-->
+<!--                    </abutton>-->
+<!--                    <a href="/properties" class="ml-4 text-primary hover:text-secondary font-medium transition-all">Cancel</a>-->
+                        <button type="submit" class="bg-secondary text-white font-lora font-medium text-[18px] py-[15px] px-[40px] rounded-[8px] hover:bg-primary transition-all">
+                           Update Property
+                        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

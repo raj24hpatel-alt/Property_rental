@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+        <!-- offcanvas-overlay start -->
+        <div class="offcanvas-overlay hidden fixed inset-0 bg-black opacity-50 z-50"></div>
+        <!-- offcanvas-overlay end -->
+        <!-- offcanvas-mobile-menu start -->
+        <div id="offcanvas-mobile-menu" class="offcanvas left-0 transform -translate-x-full fixed font-normal text-sm top-0 z-50 h-screen xs:w-[300px] lg:w-[380px] transition-all ease-in-out duration-300 bg-white">
+
+            <div class="py-12 pr-5 h-[100vh] overflow-y-auto">
+                <!-- close button start -->
+                <button class="offcanvas-close text-primary text-[25px] w-10 h-10 absolute right-0 top-0 z-[1]" aria-label="offcanvas">x</button>
+                <!-- close button end -->
+
+                <!-- offcanvas-menu start -->
+
+                <nav class="offcanvas-menu mr-[20px]">
+                    <ul>
+                        <li class="relative block border-b-primary border-b first:border-t first:border-t-primary">
+                            <a href="#" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">Home</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                               </ul>
+                        </li>
+                        <li class="relative block border-b-primary border-b">
+                            <a href="about" class="block capitalize font-normal text-black hover:text-secondary text-base my-2 py-1 px-5">About</a>
+                            <ul class="offcanvas-submenu static top-auto hidden w-full visible opacity-100 capitalize">
+                                <li><a class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-secondary" href="about">About</a></li>
+                            </ul>
+
+                        </li>
+
+
+
+                      <li class="relative block border-b-primary border-b"><a href="contact.html" class="relative block capitalize text-black hover:text-secondary text-base my-2 py-1 px-5">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- offcanvas-menu end -->
+
+                <div class="px-5 flex flex-wrap mt-3 sm:hidden">
+                    <a href="#" class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-secondary before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-primary after:rounded-md after:transition-all">Add
+                        Property</a>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- offcanvas-mobile-menu end -->
+        <!-- Header end -->
+        <!-- Hero section start -->
+
+        <section class="bg-no-repeat bg-center bg-cover bg-[#FFF6F0] h-[350px] lg:h-[513px] flex flex-wrap items-center relative before:absolute before:inset-0 before:content-[''] before:bg-[#000000] before:opacity-[70%]" style="background-image: url('static/assets/images/breadcrumb/bg-1.png');">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="max-w-[700px]  mx-auto text-center text-white relative z-[1]">
+                            <div class="mb-5"><span class="text-base block">Register</span></div>
+                            <h1 class="font-lora text-[32px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl font-medium">
+                                Register now!
+                            </h1>
+
+                            <p class="text-base mt-5 max-w-[500px] mx-auto text-center">
+                                Huge number of propreties availabe here for buy and sell
+                                also you can find here co-living property as you like
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero section end -->
+
+        <!-- contact form start -->
+<div class="py-[80px] lg:py-[120px]">
+    <div class="container">
+        <form action="registerdata" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="grid grid-cols-12 gap-x-[30px] mb-[-30px]">
+
+                <!-- LEFT SIDE -->
+                <div class="col-span-12 lg:col-span-6 mb-[30px]">
+
+                    <h2 class="font-lora text-primary text-[24px] sm:text-[30px] xl:text-xl mb-[15px] font-medium">
+                        Create Account<span class="text-secondary">.</span>
+                    </h2>
+
+                    <p class="max-w-[465px] mb-[50px]">
+                        Huge number of properties available here for buy, sell and rent.
+                        Find co-living spaces and great opportunities with amazing discounts.
+                    </p>
+
+                    <div class="grid grid-cols-12 gap-x-[20px] gap-y-[35px]">
+
+                        <!-- Name -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="text" name="name" placeholder="Name"
+                                required pattern="[A-Za-z ]+" title="Only letters allowed">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="email" name="email" placeholder="Email" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="password" name="password" placeholder="Password"
+                                required
+                                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}"
+                                title="Min 8 chars, include uppercase, lowercase, number & special character">
+
+                            <p class="text-sm text-gray-500 mt-2">
+                                Min. 8 chars: upper, lower, number & special character.
+                            </p>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="text" name="phone" placeholder="Phone"
+                                required pattern="[0-9]{10}" maxlength="10"
+                                title="Phone must be exactly 10 digits">
+                        </div>
+
+                        <!-- Address -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="text" name="address" placeholder="Address" required>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="col-span-12">
+                            <select id="role_select" class="input-field" name="Role" required>
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="1">Buyer</option>
+                                <option value="2">Seller</option>
+                            </select>
+                        </div>
+
+                        <!-- ID Proof -->
+                        <div class="col-span-12">
+                            <input class="input-field" type="file" name="id_proof" required>
+                        </div>
+
+                        <!-- Seller Fields -->
+                        <div class="col-span-12" id="shop_field">
+                            <input class="input-field" type="text" name="shop_name" placeholder="Shop Name">
+                        </div>
+
+                        <div class="col-span-12" id="property_field">
+                            <input class="input-field" type="text" name="property_rights" placeholder="Property Rights">
+                        </div>
+
+                        <input type="hidden" name="status" value="active">
+
+                        <!-- Terms -->
+                        <div class="flex flex-wrap items-center w-full sm:w-[400px] mt-[15px]">
+                            <input type="checkbox" id="checkbox1" required>
+                            <label for="checkbox1" class="ml-[5px] cursor-pointer">
+                                I agree with the
+                                <a href="#" class="underline text-secondary">Terms & Conditions</a>
+                            </label>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="col-span-12">
+                            <div class="flex flex-wrap items-center">
+                                <button type="submit"
+                                    class="relative px-[40px] py-[15px] text-white bg-primary rounded-md hover:bg-secondary transition-all">
+                                    Register
+                                </button>
+
+                                <p class="ml-[40px]">
+                                    Already have an Account?
+                                    <a href="login" class="text-secondary">Login</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE IMAGE -->
+                <div class="col-span-12 lg:col-span-6 mb-[30px]">
+                    <img src="static/assets/images/contact/image2.png"
+                        class="w-full lg:max-w-[538px] h-auto rounded-[10px]" alt="image">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- COMMON INPUT STYLE -->
+<style>
+.input-field {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    border: 1px solid rgba(15, 58, 68, 0.6);
+    border-radius: 8px;
+    font-weight: 300;
+    transition: 0.3s;
+}
+.input-field:focus {
+    border-color: #c8a96a;
+    outline: none;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.1);
+}
+</style>
+
+<!-- SCRIPT FOR SELLER FIELD -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const role = document.getElementById("role_select");
+    const shop = document.getElementById("shop_field");
+    const property = document.getElementById("property_field");
+
+    function toggleFields() {
+        if (role.value == "2") {
+            shop.style.display = "block";
+            property.style.display = "block";
+        } else {
+            shop.style.display = "none";
+            property.style.display = "none";
+        }
+    }
+
+    toggleFields();
+    role.addEventListener("change", toggleFields);
+});
+</script>
+```
+
+
+        <!-- Brand section Start-->
+        <section class="brand-section pb-[80px] lg:pb-[120px]">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="mb-[60px] text-center">
+                            <span class="text-secondary text-tiny inline-block mb-2">Our Partner’s</span>
+                            <h2 class="font-lora text-primary text-[24px] sm:text-[30px] xl:text-xl capitalize font-medium">
+                                Reliable Partner’s<span class="text-secondary">.</span></h2>
+                        </div>
+                        <div class="brand-slider">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <!-- swiper-slide start -->
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand1.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand2.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand3.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand4.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand5.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide text-center">
+                                        <a href="#" class="block">
+                                            <img src="static/assets/images/brand/brand3.png" class="w-auto h-auto block mx-auto" loading="lazy" width="125" height="109" alt="@@title">
+                                        </a>
+                                    </div>
+
+                                    <!-- swiper-slide end-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Brand section End-->
+
+        <!-- News Letter section start -->
+        <section class="py-[80px] lg:p-[90px] bg-primary relative">
+            <div class="container">
+                <div class="grid grid-cols-1">
+                    <div class="col-span">
+                        <div class="flex flex-wrap items-center justify-between">
+                            <div class="w-full lg:w-auto">
+                                <h3 class="font-lora text-white text-[24px] sm:text-[30px] xl:text-[36px] leading-[1.277] mb-[10px]">Are you a Home Owner?</h3>
+                                <p class="text-secondary leading-[1.5] tracking-[0.03em] mb-10">Put your email address and get listed.</p>
+                                <form id="mc-form" action="#" class="relative w-full">
+                                    <input id="mc-email" class="font-light text-white leading-[1.75] opacity-100 border border-secondary w-full lg:w-[395px] xl:w-[495px] h-[60px] rounded-[10px] py-[15px] pl-[15px] pr-[15px] sm:pr-[135px] focus:border-white focus:outline-none border-opacity-60 placeholder:text-[#E2E2E2] bg-transparent" type="text" placeholder="Enter your email here...">
+                                    <button id="mc-submit" type="submit" class="text-white font-medium text-[16px] leading-none tracking-[0.02em] bg-secondary py-[17px] px-[20px] mt-5 sm:mt-0 rounded-[10px] hover:bg-white hover:text-primary transition-all sm:absolute sm:right-[4px] sm:top-1/2 sm:-translate-y-1/2">Get Listed</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success text-green-400"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error text-red-600"></div><!-- mailchimp-error end -->
+                                </div>
+                                <!-- mailchimp-alerts end -->
+                            </div>
+                            <div class="w-full hidden lg:block lg:w-auto mt-5 lg:mt-0">
+                                <div class="relative mt-10 md:mt-0 lg:absolute lg:right-0 lg:bottom-0">
+                                    <img class="hero_image lg:max-w-[550px] xl:max-w-[650px] 2xl:max-w-[714px]" src="static/assets/images/newsletter/bg-1.png" width="866" height="879" alt="hero image">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- News Letter section End -->
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const roleSelect = document.getElementById('role_select');
+        const shopContainer = document.getElementById('shop_name');
+        const rightsContainer = document.getElementById('property_rights');
+
+        function toggleFields() {
+            // Value '1' is Buyer, '2' is Seller
+            if (roleSelect.value === '1') {
+                shopContainer.style.display = 'none';
+                rightsContainer.style.display = 'none';
+
+                // Optional: Clear values if hidden
+                shopContainer.querySelector('input').value = "";
+                rightsContainer.querySelector('input').value = "";
+            } else {
+                shopContainer.style.display = 'block';
+                rightsContainer.style.display = 'block';
+            }
+        }
+
+        // Run on change
+        roleSelect.addEventListener('change', toggleFields);
+
+        // Run once on page load to set initial state
+        toggleFields();
+    });
+</script>
+{% endblock %}

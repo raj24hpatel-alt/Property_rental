@@ -1,0 +1,253 @@
+
+<div class="invoice-wrapper">
+    <style>
+        :root {
+            --primary: #112D42;
+            --light-gray: #f8fafc;
+            --border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        /* Prevent base.html styles from interfering */
+        .invoice-wrapper {
+            background: #f1f5f9;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .invoice-box {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            color: var(--text-dark);
+        }
+
+        /* HEADER SECTION */
+        .header-stripe {
+            width: 100%;
+            background-color: var(--primary) !important;
+            color: white !important;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-spacing: 0;
+            overflow: hidden;
+            -webkit-print-color-adjust: exact;
+        }
+        .header-stripe td {
+            padding: 30px;
+            vertical-align: middle;
+        }
+
+        /* PROPERTY SECTION */
+        .prop-section {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .prop-img {
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .prop-details h3 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            color: var(--primary);
+        }
+        .prop-details p {
+            margin: 4px 0;
+            color: var(--text-muted);
+        }
+
+        /* INFO GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .info-card {
+            background: var(--light-gray);
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        .info-card .label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .info-card strong {
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        /* TABLE */
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .items-table th {
+            background: #f1f5f9;
+            color: var(--primary);
+            text-align: left;
+            padding: 15px;
+            font-size: 13px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border);
+        }
+        .items-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* TOTAL STRIPE */
+        .total-stripe {
+            background: var(--primary) !important;
+            color: white !important;
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            -webkit-print-color-adjust: exact;
+        }
+        .total-amount {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ACTION BUTTONS */
+        .no-print {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btn-print {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-print:hover { opacity: 0.9; }
+
+        @media print {
+            .invoice-wrapper { padding: 0; background: white; }
+            .invoice-box { box-shadow: none; max-width: 100%; border: none; }
+            .no-print { display: none; }
+            body * { visibility: hidden; }
+            .invoice-box, .invoice-box * { visibility: visible; }
+            .invoice-box { position: absolute; left: 0; top: 0; }
+        }
+    </style>
+
+    <div class="invoice-box">
+        <table class="header-stripe">
+            <tr>
+                <td>
+                    <h2 style="margin: 0; font-size: 28px;">Smart Property Rentals</h2>
+                    <p style="margin: 5px 0 0 0; opacity: 0.8; font-size: 14px;">Premium Living Spaces</p>
+                    <p style="margin: 5px 0 0 0; opacity: 0.8; font-size: 14px;">info@smartproperty.com</p>
+                </td>
+                <td style="text-align: right;">
+                    <div style="font-size: 20px; font-weight: 700;">INVOICE #: {{ invoice_number }}</div>
+                    <div style="margin-top: 5px; opacity: 0.9;">Date: {{ invoice_date|date:"d M Y" }}</div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="prop-section">
+            {% if booking.property_id.property_img %}
+                <img src="{{ booking.property_id.property_img.url }}" class="prop-img" alt="Property">
+            {% endif %}
+            <div class="prop-details">
+                <span style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: 12px;">Property Details</span>
+                <h3>{{ booking.property_id.title }}</h3>
+                <p>{{ booking.property_id.location }}</p>
+                <p><strong>Category:</strong> {{ booking.property_id.type }}</p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="label">Billed To (Buyer)</span>
+                <strong>{{ booking.buyer_id.name }}</strong>
+            </div>
+            <div class="info-card">
+                <span class="label">Property Owner (Seller)</span>
+                <strong>{{ booking.property_id.seller_id.name }}</strong>
+            </div>
+            <div class="info-card">
+                <span class="label">Stay Duration</span>
+                <strong>{{ booking.start_date|date:"d M Y" }} — {{ booking.end_date|date:"d M Y" }}</strong>
+                <div style="font-size: 12px; color: var(--text-muted);">Total: {{ total_days }} Nights</div>
+            </div>
+            <div class="info-card">
+                <span class="label">Rate per Night</span>
+                <strong>₹ {{ price_formatted }}</strong>
+            </div>
+        </div>
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th style="text-align: center;">Unit Price</th>
+                    <th style="text-align: center;">Qty (Days)</th>
+                    <th style="text-align: right;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div style="font-weight: 600;">{{ booking.property_id.title }}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">Rental reservation charges</div>
+                    </td>
+                    <td style="text-align: center;">₹ {{ price_formatted }}</td>
+                    <td style="text-align: center;">{{ total_days }}</td>
+                    <td style="text-align: right;"><strong>₹ {{ total_amount_formatted }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total-stripe">
+            <div style="text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Total Amount Due</div>
+            <div class="total-amount">₹ {{ total_amount_formatted }}</div>
+        </div>
+
+        <div class="footer-note">
+            <p>Thank you for choosing <strong>Smart Property Rentals</strong>!</p>
+            <p style="font-size: 12px;">This is a computer-generated invoice and requires no signature.</p>
+        </div>
+    </div>
+
+    <div class="no-print">
+        <button onclick="window.print()" class="btn-print">Download as PDF / Print</button>
+    </div>
+</div>

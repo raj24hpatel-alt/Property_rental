@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<style>
+body {
+    background: linear-gradient(135deg, #112D42, #1a4565);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* HEADER */
+
+.title {
+    text-align: center;
+    color: white;
+    padding: 40px 0;
+    margin-top: 100px;  /* 🔥 FIX: pushes content below navbar */
+}
+.title h1 {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+/* TABLE */
+.container-box {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.table-head {
+    background: #16384f;
+    color: white;
+    padding: 18px;
+    border-radius: 12px 12px 0 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    font-weight: 600;
+}
+
+.row-box {
+    background: white;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+
+
+/* PROPERTY */
+.property {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.property img {
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* STAR */
+.star {
+    color: gold;
+}
+
+/* EMPTY */
+.empty {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
+</style>
+
+<div class="title">
+    <h1>Customer Feedback</h1>
+    <p>See what our clients say about us</p>
+</div>
+
+<div class="container-box">
+
+    <!-- HEADER -->
+    <div class="table-head">
+        <div>Property</div>
+        <div>User</div>
+        <div>Rating</div>
+        <div>Comment</div>
+        <div>Date</div>
+    </div>
+
+    {% for f in feedbacks %}
+    <div class="row-box">
+
+        <!-- PROPERTY -->
+        <div class="property">
+            {% if f.property_id.property_img %}
+              <img src="{{ f.property_id.property_img.url }}">
+            {% else %}
+                <span>No Image</span>
+            {% endif %}
+
+            <div>
+                <strong>{{ f.property_id.title }}</strong><br>
+                <small>{{ f.property_id.location }}</small>
+            </div>
+        </div>
+
+        <!-- USER -->
+        <div>{{ f.buyer_id }}</div>
+
+        <!-- RATING -->
+        <div>
+           {% if f.rating %}
+               {% for i in "12345" %}
+                   {% if forloop.counter <= f.rating|add:0 %}
+                <span style="color: gold; font-size:18px;">★</span>
+                   {% else %}
+                <span style="color: #ccc; font-size:18px;">★</span>
+                {% endif %}
+            {% endfor %}
+         {% else %}
+            <span style="color:#ccc;">No Rating</span>
+          {% endif %}
+        </div>
+
+        <!-- COMMENT -->
+        <div>{{ f.comment }}</div>
+
+        <!--  ONLY DATE -->
+<!--        <div>{{ f.feedback_date|date:"M d, Y" }}</div>-->
+        <!-- ONLY DATE -->
+
+        <!-- DATE AND TIME -->
+        <div>
+            {{ f.feedback_date|date:"M d, Y" }}<br>
+             <small>{{ f.feedback_date|time:"h:i A" }}</small>
+        </div>
+          <!-- DATE AND TIME -->
+
+    </div>
+    {% empty %}
+        <div class="empty">
+            <h3>No feedback available</h3>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

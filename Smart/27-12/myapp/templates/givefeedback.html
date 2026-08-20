@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    --navy: #112D42;
+    --navy2: #1a4565;
+    --white: #ffffff;
+    --gold: #C9A84C;
+    --muted: #7a8a96;
+}
+
+/* REMOVE MIXED BACKGROUND */
+body {
+    background: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* HERO (ONLY BLUE) */
+.hero {
+    background: linear-gradient(135deg, #112D42, #1a4565);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* REMOVE FADE EFFECT */
+.hero::after {
+    display: none;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+}
+
+.hero em {
+    color: var(--gold);
+}
+
+/* CARD SECTION */
+.section {
+    max-width: 700px;
+    margin: -80px auto 50px;
+    padding: 0 20px;
+}
+
+/* CARD */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.card h4 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* FORM */
+.group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    height: 120px;
+}
+
+/* ── STARS ── */
+.star-row { display: flex; align-items: center; gap: 14px; }
+.star-wrap { display: flex; gap: 4px; }
+
+.star {
+    font-size: 30px;
+    color: #D9CFC0;
+    cursor: pointer;
+    transition: color 0.15s, transform 0.15s;
+    line-height: 1;
+    user-select: none;
+}
+
+.star:hover, .star.active { color: var(--gold); }
+.star:hover { transform: scale(1.2); }
+
+.star-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+    min-width: 80px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.star-label.visible { opacity: 1; }
+
+/* ── DIVIDER ── */
+.fb-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #E5D9C5, transparent);
+    margin: 28px 0;
+}
+
+/* BUTTON */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--navy), #0d2233);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* MESSAGE */
+.alert {
+    background: #d1fae5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+</style>
+
+<!-- HERO -->
+<div class="hero">
+    <div>
+        <h1>Share Your Experience</h1>
+        <p>Your feedback helps us deliver better service</p>
+    </div>
+</div>
+
+<!-- FORM -->
+<div class="section">
+    <div class="card">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <h4>Feedback Form</h4>
+        <p>Tell us about your experience</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- PROPERTY -->
+            <div class="group">
+                <label>Booked Property</label>
+               <select name="property_id" required>
+    <option value="">Select property</option>
+
+    {% regroup properties by property_id.id as unique_properties %}
+
+    {% for group in unique_properties %}
+        <option value="{{ group.grouper }}">
+            {{ group.list.0.property_id.title }}
+        </option>
+    {% endfor %}
+
+</select>
+            </div>
+
+             <div class="fb-group">
+                    <label class="fb-label">Your Rating</label>
+                    <div class="star-row">
+                        <div class="star-wrap" id="starWrap">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-label" id="starLabel">—</span>
+                    </div>
+                    <input type="hidden" name="rating" id="rating" required>
+                </div>
+
+
+            <!-- COMMENT -->
+            <div class="group">
+                <label>Your Comment</label>
+<!--                <textarea name="comment" required></textarea>-->
+                <textarea name="comment" id="comment" maxlength="200" required></textarea>
+<!--                <small id="charCount">0 / 200</small>-->
+            </div>
+
+            <button type="submit" class="btn">Submit Feedback</button>
+
+        </form>
+    </div>
+</div>
+
+<script>
+
+const stars = document.querySelectorAll('.star');
+const ratingInput = document.getElementById('rating');
+const starLabel = document.getElementById('starLabel');
+const labels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent ✨'];
+
+stars.forEach(star => {
+    star.addEventListener('mouseenter', function () {
+        const val = +this.getAttribute('data-value');
+        stars.forEach((s, i) => s.style.color = i < val ? 'var(--gold)' : '#D9CFC0');
+        starLabel.textContent = labels[val];
+        starLabel.classList.add('visible');
+    });
+
+    star.addEventListener('mouseleave', function () {
+        const current = +ratingInput.value;
+        stars.forEach((s, i) => { s.style.color = ''; s.classList.toggle('active', i < current); });
+        starLabel.textContent = current ? labels[current] : '—';
+        if (!current) starLabel.classList.remove('visible');
+    });
+
+    star.addEventListener('click', function () {
+        const val = +this.getAttribute('data-value');
+        ratingInput.value = val;
+        stars.forEach((s, i) => s.classList.toggle('active', i < val));
+        starLabel.textContent = labels[val];
+        starLabel.classList.add('visible');
+    });
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<style>
+
+.bery-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+}
+.bery-table thead th{
+    background-color:#112D42;
+    color:#ffffff;
+    font-family:'Lora', serif;
+    padding:18px 15px;
+    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:1.5px;
+    font-weight:700;
+    border:none;
+}
+.bery-table tbody tr{
+    transition:all 0.3s ease;
+    background-color:#ffffff;
+}
+.bery-table tbody tr:hover{
+    background-color:#FFF6F0;
+}
+.bery-table td{
+    padding:25px 15px;
+    border-bottom:1px solid #f0f0f0;
+    vertical-align:middle;
+    color:#555;
+    font-size:14px;
+}
+
+.status-badge{
+    padding:6px 14px;
+    border-radius:50px;
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+}
+.status-success{
+    background:#dcfce7;
+    color:#15803d;
+    border:1px solid #bcf0da;
+}
+.status-pending{
+    background:#fef9c3;
+    color:#a16207;
+    border:1px solid #fef08a;
+}
+
+/* ✅ ONLY NEW ADDITION */
+.status-cancelled{
+    background:#fee2e2;
+    color:#b91c1c;
+    border:1px solid #fecaca;
+}
+
+</style>
+
+<div style="background: linear-gradient(135deg, #112D42 0%, #1a4565 100%); padding: 100px 0 140px; text-align: center; color: white; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: auto;">
+        <h1 class="font-lora text-[32px] md:text-[42px] font-medium" style="margin-bottom: 12px; letter-spacing: -0.5px;">
+            My Booking History
+        </h1>
+        <div style="width: 50px; height: 3px; background: #B39359; margin: 0 auto 20px; border-radius: 2px;"></div>
+        <p style="opacity: 0.8; font-size: 16px; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+            Access all your past transactions, stay durations, and <span style="color: #B39359; font-weight: 500;">Razorpay</span> payment receipts in one secure place.
+        </p>
+    </div>
+</div>
+
+<section style="margin-top: -80px; padding-bottom: 100px; position: relative; z-index: 10;">
+    <div class="container" style="max-width: 1250px; margin: auto; padding: 0 20px;">
+        <div style="background: white; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #eaeaea;">
+
+            <div style="padding: 25px 35px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="font-lora" style="color: #112D42; font-size: 22px; font-weight: 600;">Transaction Log</h3>
+                <span style="font-size: 11px; background: #FFF6F0; color: #B39359; padding: 4px 12px; border-radius: 50px; font-weight: 700; text-transform: uppercase; border: 1px solid #f5e6d3;">
+                    Verified History
+                </span>
+            </div>
+
+            <table class="bery-table">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; padding-left: 35px;">Property Details</th>
+                        <th style="text-align: center;">Duration</th>
+                        <th style="text-align: center;">Razorpay ID</th>
+                        <th style="text-align: center;">Amount</th>
+                        <th style="text-align: center;">Status</th>
+                        <th style="text-align: right; padding-right: 35px;">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for booking in data %}
+                    <tr>
+                        <td style="padding-left: 35px;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <img src="{{ booking.property_id.property_img.url }}" style="width: 85px; height: 65px; object-fit: cover; border-radius: 8px; border: 1px solid #eee;">
+                                <div>
+                                    <h4 style="margin: 0; color: #112D42; font-size: 16px; font-weight: 600;">{{ booking.property_id.title }}</h4>
+                                    <small style="color: #B39359; font-weight: 700; font-size: 10px; text-transform: uppercase;">Location: {{ booking.property_id.location }}</small>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td style="text-align: center; font-size: 13px; line-height: 1.5;">
+                            <span style="color: #999;">{{ booking.start_date|date:"d M Y" }}</span><br>
+                            <span style="color: #112D42; font-weight: 700;">to</span><br>
+                            <span style="color: #999;">{{ booking.end_date|date:"d M Y" }}</span>
+                        </td>
+
+                        <td style="text-align: center;">
+                            <code style="background: #f8f9fa; padding: 5px 10px; border-radius: 6px; font-size: 11px; color: #666; border: 1px solid #eee;">{{ booking.razorpay_payment_id }}</code>
+                        </td>
+
+                        <td style="text-align: center; font-weight: 800; color: #112D42; font-size: 15px;">Rs. {{ booking.amount }}</td>
+
+                        <td style="text-align: center;">
+                            <!-- ✅ ONLY LOGIC CHANGED -->
+                            <span class="status-badge
+                                {% if booking.status == 'Success' or booking.status == 'Booked' %}
+                                    status-success
+                                {% elif booking.status == 'Cancelled' %}
+                                    status-cancelled
+                                {% else %}
+                                    status-pending
+                                {% endif %}
+                            ">
+                                {{ booking.status }}
+                            </span>
+                        </td>
+
+                        <td style="text-align: right; padding-right: 35px;">
+                            <div style="display: flex; justify-content: flex-end; gap: 12px; align-items: center;">
+                                <a href="{% url 'invoice' booking.id %}"
+   style="color: #B39359; text-decoration: none; font-weight: 700; font-size: 12px; text-transform: uppercase;">
+   Invoice
+</a>
+<!--For Support                                -->
+<!--                                <a href="#" style="color: #B39359; text-decoration: none; font-weight: 700; font-size: 12px; text-transform: uppercase;">Invoice</a>-->
+<!--                                <span style="color: #ddd;">|</span>-->
+<!--                                <a href="#" style="color: #999; text-decoration: none; font-size: 12px;">Support</a>-->
+                            </div>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 60px; color: #bbb; font-family: 'Lora', serif; font-style: italic;">
+                            No transaction history found for this account.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div style="padding: 25px 35px; background: #fafafa; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 12px; color: #888; font-weight: 500;">TOTAL RECORDS: {{ bookings|length }}</span>
+                <div style="display: flex; gap: 8px;">
+                    <button style="padding: 10px 20px; border: 1px solid #ddd; background: white; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 600;">Previous</button>
+                    <button style="padding: 10px 20px; background: #112D42; color: white; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 600; border: none;">Next Page</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

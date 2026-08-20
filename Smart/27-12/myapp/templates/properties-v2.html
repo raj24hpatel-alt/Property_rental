@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+        <!-- Hero section start -->
+        <section class="bg-no-repeat bg-center bg-cover bg-[#E9F1FF] h-[350px] lg:h-[513px] flex flex-wrap items-center relative before:absolute before:inset-0 before:content-[''] before:bg-[#000000] before:opacity-[70%]" style="background-image: url('static/assets/images/breadcrumb/bg-1.png');">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="max-w-[600px]  mx-auto text-center text-white relative z-[1]">
+                            <div class="mb-5"><span class="text-base block">Our Properties</span></div>
+                            <h1 class="font-lora text-[36px] sm:text-[50px] md:text-[68px] lg:text-[50px] leading-tight xl:text-2xl font-medium">Properties</h1>
+                            <p class="text-base mt-5 max-w-[500px] mx-auto text-center">Huge number of propreties availabe here for buy and sell also you can find here co-living property as you like</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Hero section end -->
+
+        <!-- Properties start -->
+        <section class="popular-properties py-[80px] lg:py-[120px]">
+            <div class="container">
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="flex lg:justify-between lg:flex-row flex-col-reverse justify-start items-start lg:items-center mb-10">
+                            <div class="flex flex-row items-center">
+                                <ul class="grid-tab-menu flex flex-wrap">
+                                    <li data-grid="grid" class="mr-[10px] leading-none active flex">
+                                        <button class="leading-none capitalize transition-all text-[16px] ease-out">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                                <defs>
+                                                    <clipPath id="clip0_901_7333">
+                                                        <rect width="21" height="21" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                        <div class="grid grid-tab-content active">
+                            <div class="col-span-12">
+                                <div class="all-properties properties-tab-content active">
+                                    <div class="grid sm:grid-cols-2 lgd:grid-cols-3 gap-[30px]">
+                                        {% for i in properties %}
+                                        <div class="swiper-slide">
+                                            <div class="overflow-hidden rounded-md drop-shadow-[0px_0px_5px_rgba(0,0,0,0.1)] bg-[#FFFDFC] text-center transition-all duration-300 hover:-translate-y-[10px]">
+                                                <div class="relative">
+                                                    <a href="/properties-details/{{i.id}}" class="block">
+                                                        {% if i.images.all %}
+                                                        <img src="{{ i.images.all.0.image.url }}" class="w-full h-full" loading="lazy" width="370" height="266" alt="Elite Garden Resedence.">
+                                                        {%endif%}
+                                                    </a>
+<!--                                                    <div class="flex flex-wrap flex-col absolute top-5 right-5">-->
+<!--                                                        <button class="flex flex-wrap items-center bg-[rgb(11,44,61,0.8)] p-[5px] rounded-[2px] text-white mb-[5px] text-xs"><img class="mr-1" src="static/assets/images/icon/camera.png" loading="lazy" width="13" height="10" alt="camera icon">07</button>-->
+<!--                                                        <button class="flex flex-wrap items-center bg-[rgb(11,44,61,0.8)] p-[5px] rounded-[2px] text-white text-xs"><img class="mr-1" src="static/assets/images/icon/video.png" loading="lazy" width="14" height="10" alt="camera icon">08</button>-->
+<!--                                                    </div>-->
+                                                    <span
+                class="absolute bottom-5 left-5 bg-[#FFFDFC] p-[5px] rounded-[2px] text-primary leading-none text-[14px] font-normal capitalize">for
+                Rent</span>
+                                                </div>
+
+                                                <div class="py-[20px] px-[20px] text-left">
+                                                    <h3><a href="/properties-details/{{i.id}}" class="font-lora leading-tight text-[22px] xl:text-[26px] text-primary hover:text-secondary transition-all font-medium">{{i.title}}</a></h3>
+                                                    <h4><a href="/properties-details/{{i.id}}" class="font-light text-[14px] leading-[1.75] underline">{{i.location}}</a></h4>
+                                                    <span class="font-light text-sm">Added: {{i.created_at}}</span>
+                                                    <ul class="flex flex-wrap items-center justify-between text-[12px] mt-[10px] mb-[15px] pb-[10px] border-b border-[#E0E0E0]">
+                                                    </ul>
+
+                                                    <ul>
+                                                        <li class="flex flex-wrap items-center justify-between">
+                                                            <span class="font-lora text-base text-primary leading-none font-medium">Price: Rs.{{i.price}}</span>
+
+                                                            <span class="flex flex-wrap items-center">
+
+                    </span>
+                                                        </li>
+                                                    </ul>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Properties end -->
+
+{% endblock %}
